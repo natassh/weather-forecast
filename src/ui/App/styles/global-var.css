@@ -1,0 +1,14 @@
+:root {
+  --color-main: #fff;
+  --color-second: #5dc9f7;
+  --color-text: #020009;
+  --bg-: #fafafa;
+
+  --main-font: 'Montserrat', sans-serif;
+  --second-font: 'Playfair Display', serif;
+  --font: 'Jomolhari', serif;
+
+  --bold: 700;
+  --regular: 400;
+  --light: 300;
+}
