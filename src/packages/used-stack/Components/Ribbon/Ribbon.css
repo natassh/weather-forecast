@@ -23,6 +23,7 @@
 }
 .stack:hover .stack__title {
   transform: scale(1.1);
+  background-color: var(--bg-);
 }
 @media screen and (max-width: 660px) {
   .stack__title {

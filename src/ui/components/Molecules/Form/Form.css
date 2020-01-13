@@ -1,0 +1,9 @@
+.Form {
+  background-color: var(--color-second);
+  padding: 1rem 2rem 1rem 2rem;
+}
+@media screen and (max-width: 900px) {
+  .Title {
+    font-size: 3.2rem;
+  }
+}

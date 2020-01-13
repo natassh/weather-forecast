@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Title from '../components/Atoms/Title';
+import Form from '../components/Molecules/Form';
 
 import Ribbon from '../../packages/used-stack/Components/Ribbon/Ribbon';
 import Modal from '../../packages/used-stack/Components/Modal/Modal';
@@ -25,6 +26,8 @@ function App() {
 
       <Ribbon text="Used stack" onChange={handleIsOpen} />
       {state.isOpen && <Modal onClose={handleCloseModal} />}
+
+      <Form className="Form" />
     </div>
   );
 }

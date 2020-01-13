@@ -8,8 +8,8 @@
   padding: 2rem 0 1rem 0;
   color: var(--color-second);
 }
-.Title strong {
-  color: var(--color-second);
+.Title {
+  margin-bottom: 5rem;
 }
 @media screen and (max-width: 900px) {
   .Title {
