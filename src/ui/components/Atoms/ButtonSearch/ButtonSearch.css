@@ -1,0 +1,10 @@
+.BloggerSearchForm__ButtonSearch {
+  border-radius: 0.25rem;
+  background-color: var(--bg-);
+  width: 85%;
+  height: 3rem;
+  font-family: var(--second-font);
+  font-size: 1rem;
+  color: var(--color-text);
+  text-transform: uppercase;
+}

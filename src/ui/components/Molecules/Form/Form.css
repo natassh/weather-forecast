@@ -1,6 +1,9 @@
 .Form {
-  background-color: var(--color-second);
-  padding: 1rem 2rem 1rem 2rem;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: flex-start;
 }
 @media screen and (max-width: 900px) {
   .Title {

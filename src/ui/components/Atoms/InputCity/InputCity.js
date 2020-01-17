@@ -4,26 +4,25 @@ import PropTypes from 'prop-types';
 import './InputCity.css';
 
 const InputCity = ({ onChange }) => {
-  const [state, setState] = useState({
-    valueInput: ''
-  });
+  const [valueInput, setvalueInput] = useState('');
 
   const handleChange = e => {
-    const newValueInput = e.target.value;
-    setState({ valueInput: newValueInput });
+    const value = e.target.value;
+    setvalueInput({ valueInput: value });
 
-    onChange(newValueInput);
+    onChange(value);
   };
 
-  //const { valueInput } = state;
   return (
-    <input
-      className="Form__InputCity"
-      type="text"
-      placeholder="Ciudad"
-      value={state.valueInput}
-      onChange={handleChange}
-    />
+    <>
+      <label>Ciudad:</label>
+      <input
+        className="Form__InputCity"
+        type="text"
+        value={valueInput.state}
+        onChange={handleChange}
+      />
+    </>
   );
 };
 

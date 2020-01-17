@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Title from '../components/Atoms/Title';
+import ArticleWeather from '../components/Atoms/ArticleWeather';
 import Form from '../components/Molecules/Form';
 
 import Ribbon from '../../packages/used-stack/Components/Ribbon/Ribbon';
@@ -11,6 +12,7 @@ function App() {
   const [state, setState] = useState({
     isOpen: false
   });
+  const [weather, setWeather] = useState();
 
   const handleIsOpen = value => {
     setState({ isOpen: value });
@@ -20,14 +22,23 @@ function App() {
     setState({ isOpen: false });
   };
 
+  const handleWeather = weatherObtained => {
+    setWeather({ weather: weatherObtained });
+  };
+
   return (
     <div className="App">
       <Title className="Title">El pronóstico del tiempo</Title>
 
       <Ribbon text="Used stack" onChange={handleIsOpen} />
       {state.isOpen && <Modal onClose={handleCloseModal} />}
+      <main>
+        <Form className="Form" onWeatherObtained={handleWeather} />
 
-      <Form className="Form" />
+        {weather && (
+          <ArticleWeather weather={weather} className="ArticleWeather" />
+        )}
+      </main>
     </div>
   );
 }

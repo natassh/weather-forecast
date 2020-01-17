@@ -3,3 +3,17 @@
 @import url('https://fonts.googleapis.com/css?family=Jomolhari&display=swap');
 /* Commons */
 @import 'global-var.css';
+
+main {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  background-color: var(--color-second);
+  padding: 1rem 2rem 1rem 2rem;
+}
+article {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

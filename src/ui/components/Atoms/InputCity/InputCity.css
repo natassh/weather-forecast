@@ -4,13 +4,20 @@
   border: 0;
   background: #5dc9f7;
   border-bottom: 1px solid var(--color-main);
-  padding: 1rem;
-  width: 25%;
+  padding: 0.5rem;
+  width: 82%;
   display: inline-block;
   font-family: var(--second-font);
   font-size: 1rem;
   color: var(--color-main);
+  margin-bottom: 2rem;
 }
 .Form__InputCity::placeholder {
   color: var(--color-main);
+}
+label {
+  font-family: var(--second-font);
+  font-size: 1rem;
+  color: var(--color-main);
+  margin-bottom: 1rem;
 }

@@ -1,38 +1,57 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { getWeather } from '../../../../core/services/weather';
 
 import InputCity from '../../Atoms/InputCity';
-import SelectCountry from '../../Atoms/SelectCountry';
+//import SelectCountry from '../../Atoms/SelectCountry';
+import ButtonSearch from '../../Atoms/ButtonSearch';
+import TextError from '../../Atoms/TextError';
+
+import options from '../../../assets/countrySelect/countryOptionsSelect';
+
+import SelectCountry from 'react-select';
+import '../../Atoms/SelectCountry';
 
 import './Form.css';
 
-const Form = ({ className }) => {
-  const [state, setState] = useState({
-    value: ''
-  });
+const Form = ({ className, onWeatherObtained }) => {
+  const [city, setCity] = useState();
+  const [country, setCountry] = useState();
 
-  const handleChange = valueInput => {
-    setState({ value: valueInput });
+  const handleChange = value => {
+    setCity({ city: value });
   };
 
-  const handleChangeSelect = dato => {
-    console.log('dato select');
+  const handleChangeSelect = country => {
+    const countryCode = country.value;
+    setCountry({ country: countryCode });
+  };
+
+  const handleSubmit = async e => {
+    e.preventDefault();
+    if (city && country) {
+      const citySelected = city.city;
+      const countrySelected = country.country;
+      const weatherObtained = await getWeather(citySelected, countrySelected);
+      onWeatherObtained(weatherObtained);
+    } else {
+      console.log('ciudades vacias');
+      //showError();
+    }
   };
 
   return (
-    <form className={className}>
+    <form className={className} onSubmit={handleSubmit}>
       <InputCity onChange={handleChange} />
-      <SelectCountry onChange={handleChangeSelect}>
-        <option value="ES">España</option>
-        <option value="BE">Bélgica</option>
-        <option value="RU">Rusia</option>
-        <option value="US">Estados Unidos de América</option>
-        <option value="GB">Reino Unido</option>
-        <option value="FR">Francia</option>
-        <option value="DE">Alemania</option>
-        <option value="DK">Dinamarka</option>
-        <option value="IS">Islandia</option>
-      </SelectCountry>
+
+      <label>Selecciona un país:</label>
+      <SelectCountry
+        onChange={handleChangeSelect}
+        options={options}
+        className="Form__SelectCountry"
+      />
+
+      <ButtonSearch type="submit" value="Buscar" />
     </form>
   );
 };
