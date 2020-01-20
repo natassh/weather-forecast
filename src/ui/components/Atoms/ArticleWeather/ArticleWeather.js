@@ -4,9 +4,7 @@ import PropTypes from 'prop-types';
 import './ArticleWeather.css';
 
 const ArticleWeather = ({ className, weather }) => {
-  //if (weather.weather.cod === '404' || weather.weather.cod === 404) {
   const { name, main, wind } = weather.weather;
-
   const kelvin = 273.15;
 
   const temp = parseFloat(main.temp - kelvin, 10).toFixed(2);

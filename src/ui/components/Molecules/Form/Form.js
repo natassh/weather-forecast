@@ -3,9 +3,7 @@ import PropTypes from 'prop-types';
 import { getWeather } from '../../../../core/services/weather';
 
 import InputCity from '../../Atoms/InputCity';
-//import SelectCountry from '../../Atoms/SelectCountry';
 import ButtonSearch from '../../Atoms/ButtonSearch';
-import TextError from '../../Atoms/TextError';
 
 import options from '../../../assets/countrySelect/countryOptionsSelect';
 
@@ -15,8 +13,18 @@ import '../../Atoms/SelectCountry';
 import './Form.css';
 
 const Form = ({ className, onWeatherObtained }) => {
-  const [city, setCity] = useState();
-  const [country, setCountry] = useState();
+  const [city, setCity] = useState('Madrid');
+  const [country, setCountry] = useState('ES');
+
+  /* Default load */
+  useEffect(() => {
+    handleWeatherDefault();
+  }, []);
+
+  const handleWeatherDefault = async () => {
+    const weatherDefault = await getWeather(city, country);
+    onWeatherObtained(weatherDefault);
+  };
 
   const handleChange = value => {
     setCity({ city: value });
@@ -29,15 +37,10 @@ const Form = ({ className, onWeatherObtained }) => {
 
   const handleSubmit = async e => {
     e.preventDefault();
-    if (city && country) {
-      const citySelected = city.city;
-      const countrySelected = country.country;
-      const weatherObtained = await getWeather(citySelected, countrySelected);
-      onWeatherObtained(weatherObtained);
-    } else {
-      console.log('ciudades vacias');
-      //showError();
-    }
+    const citySelected = city.city;
+    const countrySelected = country.country;
+    const weatherObtained = await getWeather(citySelected, countrySelected);
+    onWeatherObtained(weatherObtained);
   };
 
   return (

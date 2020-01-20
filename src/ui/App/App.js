@@ -12,7 +12,6 @@ function App() {
   const [state, setState] = useState({
     isOpen: false
   });
-  const [weather, setWeather] = useState();
 
   const handleIsOpen = value => {
     setState({ isOpen: value });
@@ -21,6 +20,8 @@ function App() {
   const handleCloseModal = () => {
     setState({ isOpen: false });
   };
+
+  const [weather, setWeather] = useState();
 
   const handleWeather = weatherObtained => {
     setWeather({ weather: weatherObtained });
