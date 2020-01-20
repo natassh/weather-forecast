@@ -4,16 +4,20 @@
 /* Commons */
 @import 'global-var.css';
 
+* {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
 main {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
   background-color: var(--color-second);
-  padding: 1rem 2rem 1rem 2rem;
+  padding: 3rem 2rem 3rem 2rem;
 }
-article {
-  width: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+@media screen and (max-width: 767px) {
+  main {
+    flex-direction: column;
+  }
 }

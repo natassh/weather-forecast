@@ -16,3 +16,8 @@
 .css-1okebmr-indicatorSeparator {
   background-color: var(--color-main) !important;
 }
+@media screen and (max-width: 767px) {
+  .Form__SelectCountry {
+    width: 100%;
+  }
+}

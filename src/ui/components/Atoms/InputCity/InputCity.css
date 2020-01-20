@@ -21,3 +21,8 @@ label {
   color: var(--color-main);
   margin-bottom: 1rem;
 }
+@media screen and (max-width: 767px) {
+  .Form__InputCity {
+    width: 100%;
+  }
+}

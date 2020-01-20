@@ -17,13 +17,25 @@ const ArticleWeather = ({ className, weather }) => {
 
   return (
     <article className={className}>
-      <h2>El clima de {name} es:</h2>
+      <h2>
+        El clima de {name} es: <strong>{temp} ºC</strong>
+      </h2>
       <ul>
-        <li>Temperatura actual: {temp} ºC</li>
-        <li>Temperatura máxima para hoy: {tempMax} ºC</li>
-        <li>Temperatura mínima para hoy: {tempMin} ºC</li>
-        <li>Humedad: {humidity} %</li>
-        <li>Viento: {windSpeed} km/h</li>
+        <li>
+          Temperatura actual: <strong>{temp} ºC</strong>
+        </li>
+        <li>
+          Temperatura máxima para hoy: <strong>{tempMax} ºC</strong>
+        </li>
+        <li>
+          Temperatura mínima para hoy: <strong>{tempMin} ºC</strong>{' '}
+        </li>
+        <li>
+          Humedad: <strong>{humidity} %</strong>{' '}
+        </li>
+        <li>
+          Viento: <strong>{windSpeed} km/h</strong>{' '}
+        </li>
       </ul>
     </article>
   );

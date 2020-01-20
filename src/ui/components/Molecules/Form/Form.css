@@ -1,12 +1,13 @@
 .Form {
-  width: 50%;
+  width: 52%;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: flex-start;
 }
-@media screen and (max-width: 900px) {
-  .Title {
-    font-size: 3.2rem;
+@media screen and (max-width: 767px) {
+  .Form {
+    width: 100%;
+    margin-bottom: 1.5rem;
   }
 }
