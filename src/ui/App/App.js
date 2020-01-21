@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Title from '../components/Atoms/Title';
 import ArticleWeather from '../components/Atoms/ArticleWeather';
-import Form from '../components/Molecules/Form';
+import FormWeather from '../components/Molecules/FormWeather';
 import Footer from '../components/Molecules/Footer';
 
 import Ribbon from '../../packages/used-stack/Components/Ribbon/Ribbon';
@@ -36,7 +36,7 @@ function App() {
       {state.isOpen && <Modal onClose={handleCloseModal} />}
       <main>
         <div className="cw">
-          <Form className="Form" onWeatherObtained={handleWeather} />
+          <FormWeather className="Form" onWeatherObtained={handleWeather} />
 
           {weather && (
             <ArticleWeather weather={weather} className="ArticleWeather" />

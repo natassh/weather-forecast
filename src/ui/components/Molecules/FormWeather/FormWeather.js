@@ -10,9 +10,9 @@ import options from '../../../assets/countrySelect/countryOptionsSelect';
 import SelectCountry from 'react-select';
 import '../../Atoms/SelectCountry';
 
-import './Form.css';
+import './FormWeather.css';
 
-const Form = ({ className, onWeatherObtained }) => {
+const FormWeather = ({ className, onWeatherObtained }) => {
   const [city, setCity] = useState('Madrid');
   const [country, setCountry] = useState('ES');
 
@@ -60,8 +60,8 @@ const Form = ({ className, onWeatherObtained }) => {
   );
 };
 
-export default Form;
+export default FormWeather;
 
-Form.propTypes = {
+FormWeather.propTypes = {
   className: PropTypes.string
 };
