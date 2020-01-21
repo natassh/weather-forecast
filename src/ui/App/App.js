@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Title from '../components/Atoms/Title';
 import ArticleWeather from '../components/Atoms/ArticleWeather';
 import Form from '../components/Molecules/Form';
+import Footer from '../components/Molecules/Footer';
 
 import Ribbon from '../../packages/used-stack/Components/Ribbon/Ribbon';
 import Modal from '../../packages/used-stack/Components/Modal/Modal';
@@ -42,6 +43,7 @@ function App() {
           )}
         </div>
       </main>
+      <Footer />
     </div>
   );
 }
