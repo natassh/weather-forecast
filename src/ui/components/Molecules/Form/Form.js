@@ -19,6 +19,7 @@ const Form = ({ className, onWeatherObtained }) => {
   /* Default load */
   useEffect(() => {
     handleWeatherDefault();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleWeatherDefault = async () => {

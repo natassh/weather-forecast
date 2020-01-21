@@ -26,7 +26,7 @@ function App() {
   const handleWeather = weatherObtained => {
     setWeather({ weather: weatherObtained });
   };
-
+  console.log(weather);
   return (
     <div className="App">
       <Title className="Title">El pronóstico del tiempo</Title>
@@ -34,11 +34,13 @@ function App() {
       <Ribbon text="Used stack" onChange={handleIsOpen} />
       {state.isOpen && <Modal onClose={handleCloseModal} />}
       <main>
-        <Form className="Form" onWeatherObtained={handleWeather} />
+        <div className="cw">
+          <Form className="Form" onWeatherObtained={handleWeather} />
 
-        {weather && (
-          <ArticleWeather weather={weather} className="ArticleWeather" />
-        )}
+          {weather && (
+            <ArticleWeather weather={weather} className="ArticleWeather" />
+          )}
+        </div>
       </main>
     </div>
   );

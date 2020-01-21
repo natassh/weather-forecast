@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import './ArticleWeather.css';
 
 const ArticleWeather = ({ className, weather }) => {
+  console.log(weather);
   const { name, main, wind } = weather.weather;
   const kelvin = 273.15;
 

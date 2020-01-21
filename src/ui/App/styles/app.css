@@ -10,14 +10,29 @@
 }
 
 main {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
   background-color: var(--color-second);
   padding: 3rem 2rem 3rem 2rem;
 }
+.cw {
+  width: 1024px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+@media screen and (max-width: 1095px) {
+  .cw {
+    width: 768px;
+  }
+}
+@media screen and (max-width: 830px) {
+  .cw {
+    width: 650px;
+  }
+}
 @media screen and (max-width: 767px) {
-  main {
+  .cw {
+    width: 100%;
     flex-direction: column;
   }
 }
