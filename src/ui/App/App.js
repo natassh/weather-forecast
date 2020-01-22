@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { getWeather } from '../../core/services/weather';
 import Title from '../components/Atoms/Title';
 import ArticleWeather from '../components/Atoms/ArticleWeather';
 import FormWeather from '../components/Molecules/FormWeather';
@@ -10,35 +11,49 @@ import Modal from '../../packages/used-stack/Components/Modal/Modal';
 import './styles/app.css';
 
 function App() {
-  const [state, setState] = useState({
+  const [modal, setModal] = useState({
     isOpen: false
   });
 
-  const handleIsOpen = value => {
-    setState({ isOpen: value });
+  const handleIsOpenModal = value => {
+    setModal({ isOpen: value });
   };
 
   const handleCloseModal = () => {
-    setState({ isOpen: false });
+    setModal({ isOpen: false });
   };
 
-  const [weather, setWeather] = useState();
+  const [weather, setWeather] = useState({});
+  useEffect(() => {
+    handleweather();
+  }, []);
 
-  const handleWeather = weatherObtained => {
-    setWeather({ weather: weatherObtained });
+  const handleweather = async () => {
+    const weather = await getWeather('Madrid', 'ES');
+    setWeather(weather);
   };
-  console.log(weather);
+
+  const handleWeatherObtained = async weatherObtained => {
+    const citySelected = weatherObtained.city;
+    const countrySelected = weatherObtained.country;
+
+    const weatherWithFormData = await getWeather(citySelected, countrySelected);
+    setWeather(weatherWithFormData);
+  };
+
   return (
     <div className="App">
       <Title className="Title">El pronóstico del tiempo</Title>
 
-      <Ribbon text="Used stack" onChange={handleIsOpen} />
-      {state.isOpen && <Modal onClose={handleCloseModal} />}
+      <Ribbon text="Used stack" onChange={handleIsOpenModal} />
+      {modal.isOpen && <Modal onClose={handleCloseModal} />}
       <main>
         <div className="cw">
-          <FormWeather className="Form" onWeatherObtained={handleWeather} />
-
-          {weather && (
+          <FormWeather
+            className="Form"
+            weatherObtained={handleWeatherObtained}
+          />
+          {Object.keys(weather).length > 0 && (
             <ArticleWeather weather={weather} className="ArticleWeather" />
           )}
         </div>

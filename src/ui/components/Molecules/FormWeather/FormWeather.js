@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { getWeather } from '../../../../core/services/weather';
 
 import InputCity from '../../Atoms/InputCity';
 import ButtonSearch from '../../Atoms/ButtonSearch';
@@ -12,45 +11,34 @@ import '../../Atoms/SelectCountry';
 
 import './FormWeather.css';
 
-const FormWeather = ({ className, onWeatherObtained }) => {
-  const [city, setCity] = useState('Madrid');
-  const [country, setCountry] = useState('ES');
-
-  /* Default load */
-  useEffect(() => {
-    handleWeatherDefault();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  const handleWeatherDefault = async () => {
-    const weatherDefault = await getWeather(city, country);
-    onWeatherObtained(weatherDefault);
+const FormWeather = ({ className, weatherObtained }) => {
+  const [weather, setWeather] = useState({
+    city: '',
+    country: ''
+  });
+  const handleChangeCity = cityValue => {
+    setWeather({ city: cityValue });
   };
 
-  const handleChange = value => {
-    setCity({ city: value });
-  };
-
-  const handleChangeSelect = country => {
+  const handleChangeCountry = country => {
     const countryCode = country.value;
-    setCountry({ country: countryCode });
+    setWeather({
+      ...weather,
+      country: countryCode
+    });
   };
-
-  const handleSubmit = async e => {
+  const handleSubmit = e => {
     e.preventDefault();
-    const citySelected = city.city;
-    const countrySelected = country.country;
-    const weatherObtained = await getWeather(citySelected, countrySelected);
-    onWeatherObtained(weatherObtained);
+    weatherObtained(weather);
   };
 
   return (
     <form className={className} onSubmit={handleSubmit}>
-      <InputCity onChange={handleChange} />
+      <InputCity onChange={handleChangeCity} />
 
       <label>Selecciona un país:</label>
       <SelectCountry
-        onChange={handleChangeSelect}
+        onChange={handleChangeCountry}
         options={options}
         className="Form__SelectCountry"
       />
@@ -63,5 +51,6 @@ const FormWeather = ({ className, onWeatherObtained }) => {
 export default FormWeather;
 
 FormWeather.propTypes = {
-  className: PropTypes.string
+  className: PropTypes.string,
+  weatherObtained: PropTypes.func
 };
